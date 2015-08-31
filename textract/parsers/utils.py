@@ -7,7 +7,6 @@ import tempfile
 import os
 
 import chardet
-
 from .. import exceptions
 
 
@@ -32,7 +31,7 @@ class BaseParser(object):
 
     def process(self, filename, encoding, **kwargs):
         """Process ``filename`` and encode byte-string with ``encoding``. This
-        method is called by :func:`textract.parsers.process` and wraps
+        method is called by :func:`textextractor.extractors.process` and wraps
         the :meth:`.BaseParser.extract` method in `a delicious unicode
         sandwich <http://nedbatchelder.com/text/unipain.html>`_.
 
@@ -51,7 +50,7 @@ class BaseParser(object):
         """
         # only decode byte strings into unicode if it hasn't already
         # been done by a subclass
-        if isinstance(text, unicode):
+        if isinstance(text, str):
             return text
 
         # empty text? nothing to decode
@@ -73,7 +72,7 @@ class ShellParser(BaseParser):
     def run(self, command):
         """Run ``command`` and return the subsequent ``stdout`` and ``stderr``
         as a tuple. If the command is not successful, this raises a
-        :exc:`textract.exceptions.ShellError`.
+        :exc:`textextractor.exceptions.ShellError`.
         """
 
         # run a subprocess and put the stdout and stderr on the pipe object

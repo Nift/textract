@@ -7,6 +7,7 @@ import importlib
 
 from .. import exceptions
 
+
 # Dictionary structure for synonymous file extension types
 EXTENSION_SYNONYMS = {
     ".jpeg": ".jpg",
@@ -48,9 +49,9 @@ def process(filename, encoding=DEFAULT_ENCODING, **kwargs):
     # currently supported
     this_dir = os.path.dirname(os.path.abspath(__file__))
     if not os.path.exists(os.path.join(this_dir, module_name + '.py')):
-        raise exceptions.ExtensionNotSupported(ext)
+        return "Failed to extract text from this file format, not supported as of yet."
 
     # do the extraction
-    filetype_module = importlib.import_module(rel_module, 'textract.parsers')
+    filetype_module = importlib.import_module(rel_module, 'textextraction.parsers')
     parser = filetype_module.Parser()
     return parser.process(filename, encoding, **kwargs)

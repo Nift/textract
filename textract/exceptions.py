@@ -19,8 +19,8 @@ class ExtensionNotSupported(CommandLineError):
     def __str__(self):
         return self.render((
             'The filename extension %(ext)s is not yet supported by\n'
-            'textract. Please suggest this filename extension here:\n\n'
-            '    https://github.com/deanmalmgren/textract/issues\n'
+            'textextractor. Please suggest this filename extension here:\n\n'
+            '    https://github.com/deanmalmgren/textextractor/issues\n'
         ))
 
 
@@ -71,8 +71,8 @@ class ShellError(CommandLineError):
             "The command `%(command)s` failed because the executable\n"
             "`%(executable)s` is not installed on your system. Please make\n"
             "sure the appropriate dependencies are installed before using\n"
-            "textract:\n\n"
-            "    http://textract.readthedocs.org/en/latest/installation.html\n"
+            "textextractor:\n\n"
+            "    http://textextractor.readthedocs.org/en/latest/installation.html\n"
         ) % vars(self)
 
     def failed_message(self):

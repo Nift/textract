@@ -19,11 +19,11 @@ class Parser(BaseParser):
             for curr_row in range(num_rows):
                 row = worksheet.row(curr_row)
                 new_output = []
-                for index_col in xrange(num_cells):
+                for index_col in range(num_cells):
                     value = worksheet.cell_value(curr_row, index_col)
                     if value:
                         if isinstance(value, (int, float)):
-                            value = unicode(value)
+                            value = str(value)
                         new_output.append(value)
                 if new_output:
                     output += u' '.join(new_output) + u'\n'
